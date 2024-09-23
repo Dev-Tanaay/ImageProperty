@@ -16,13 +16,13 @@ export default function CreateListing() {
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [],
-    name: '',
-    description: '',
-    address: '',
+    // name: '',
+    // description: '',
+    // address: '',
     type: 'rent',
-    bedrooms: 1,
-    bathrooms: 1,
-    regularPrice: 50,
+    // bedrooms: 1,
+    // bathrooms: 1,
+    regularPrice: 10000,
     discountPrice: 0,
     offer: false,
     parking: false,
@@ -184,7 +184,7 @@ export default function CreateListing() {
             maxLength='62'
             minLength='10'
             required
-            onChange={handleChange}
+            // onChange={handleChange}
             value={formData.name}
           />
           <textarea
@@ -193,7 +193,7 @@ export default function CreateListing() {
             className='border p-3 rounded-lg'
             id='description'
             required
-            onChange={handleChange}
+            // onChange={handleChange}
             value={formData.description}
           />
           <input
@@ -202,7 +202,7 @@ export default function CreateListing() {
             className='border p-3 rounded-lg'
             id='address'
             required
-            onChange={handleChange}
+            // onChange={handleChange}
             value={formData.address}
           />
           <div className='flex gap-6 flex-wrap'>
@@ -263,10 +263,9 @@ export default function CreateListing() {
                 type='number'
                 id='bedrooms'
                 min='1'
-                max='10'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
-                onChange={handleChange}
+                // onChange={handleChange}
                 value={formData.bedrooms}
               />
               <p>Beds</p>
@@ -276,10 +275,9 @@ export default function CreateListing() {
                 type='number'
                 id='bathrooms'
                 min='1'
-                max='10'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
-                onChange={handleChange}
+                // onChange={handleChange}
                 value={formData.bathrooms}
               />
               <p>Baths</p>
@@ -288,8 +286,7 @@ export default function CreateListing() {
               <input
                 type='number'
                 id='regularPrice'
-                min='50'
-                max='10000000'
+                min='10000'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
                 onChange={handleChange}
@@ -298,7 +295,7 @@ export default function CreateListing() {
               <div className='flex flex-col items-center'>
                 <p>Regular price</p>
                 {formData.type === 'rent' && (
-                  <span className='text-xs'>($ / month)</span>
+                  <span className='text-xs'>(₹ / month)</span>
                 )}
               </div>
             </div>
@@ -308,7 +305,6 @@ export default function CreateListing() {
                   type='number'
                   id='discountPrice'
                   min='0'
-                  max='10000000'
                   required
                   className='p-3 border border-gray-300 rounded-lg'
                   onChange={handleChange}
@@ -317,7 +313,7 @@ export default function CreateListing() {
                 <div className='flex flex-col items-center'>
                   <p>Discounted price</p>
                   {formData.type === 'rent' && (
-                    <span className='text-xs'>($ / month)</span>
+                    <span className='text-xs'>(₹ / month)</span>
                   )}
                 </div>
               </div>

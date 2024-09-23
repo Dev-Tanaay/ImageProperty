@@ -55,7 +55,7 @@ const Users = () => {
                     <tr>
                         <th className="py-3 px-6 text-left">UserName</th>
                         <th className="py-3 px-6 text-left">Email</th>
-                        <th className="py-3 px-6 text-left">Edit</th>
+                        <th className="py-3 px-6 text-left">View</th>
                         <th className="py-3 px-6 text-left">Delete</th>
                     </tr>
                 </thead>
@@ -66,7 +66,7 @@ const Users = () => {
                             <td className="py-3 px-6">{item.email}</td>
                             <td className="py-3 px-6 cursor-default" onClick={() => handleId(item._id,item.username)}>
                                 <span className="text-white bg-green-500 px-2 py-1 rounded-full">
-                                    View
+                                    Listing
                                 </span>
                             </td>
                             <td className="py-3 px-6 cursor-default" onClick={() => handleDelete(item._id)}>

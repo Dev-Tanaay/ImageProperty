@@ -6,6 +6,8 @@ const User = () => {
     const location = useLocation();
     const { id,username } = location.state || {};
     const [userData, setUserData] = useState([]);
+    const [total, setTotal] = useState(0);
+
     const getListing = async (id) => {
         try {
             const response = await fetch(`/api/admin/list/${id}`);
@@ -13,7 +15,8 @@ const User = () => {
                 throw new Error(`Error: ${response.status}`);
             }
             const data = await response.json();
-            setUserData(data);
+            setUserData(data.listings);
+            setTotal(data.totalListings);
         } catch (error) {
             console.log(error);
         }
@@ -28,7 +31,7 @@ const User = () => {
     return (
         <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold text-slate-700">{username}</h1>
+                <h1 className="text-2xl font-bold text-slate-700">{username}<span className="ml-10 text-slate-600">{total} Listings</span></h1>
             </div>
 
             <table className="min-w-full bg-white border border-gray-200">

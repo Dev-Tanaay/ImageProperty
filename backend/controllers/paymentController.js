@@ -17,7 +17,7 @@ const paymentController = async (req, res, next) => {
   try {
     const exchangeRate = await getExchange();
     const amount = 1; 
-    const inr = Math.round(exchangeRate * amount *100); 
+    const inr = Math.round(exchangeRate * amount*100); 
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -38,7 +38,7 @@ const paymentController = async (req, res, next) => {
 
     res.json({ success: true, url: session.url });
     const payment_id = session.id;
-    await Payment.create({ payment_id, username: req.body.username, amount: Math.round(exchangeRate*amount) });
+    await Payment.create({ payment_id, username: req.body.username, amount: parseFloat((exchangeRate*amount).toFixed(2)) });
   } catch (error) {
     next(errorHandler("500", error));
   }

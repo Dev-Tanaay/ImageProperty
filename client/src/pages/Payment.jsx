@@ -49,7 +49,7 @@ const Payment = ({setTotalAmount}) => {
                 <tfoot>
                     <tr>
                         <td colSpan="2" className="py-3 px-6 font-bold text-right">Total</td>
-                        <td className="py-3 px-6 font-bold">{totalAmount}</td>
+                        <td className="py-3 px-6 font-bold">{parseFloat((totalAmount).toFixed(2))}</td>
                     </tr>
                 </tfoot>
             </table>

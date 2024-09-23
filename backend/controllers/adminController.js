@@ -19,6 +19,7 @@ const getUsers = async (req, res) => {
 const deleteUser = async (req, res, next) => {
     try {
         await User.findByIdAndDelete(req.params.id);
+        await Listing.deleteMany({ userRef: req.params.id });
         res.status(200).json('User has been deleted!');
     } catch (error) {
         next(error);
@@ -51,10 +52,11 @@ const getPayment = async (req, res) => {
 const getListing = async (req, res) => {
     try {
         const listings = await Listing.find({ userRef: req.params.id },{userRef:0});
+        const totalListings = await Listing.countDocuments({ userRef: req.params.id });
         if (listings.length === 0) {
             return res.status(404).json({ message: "No listings found for this user" });
         }
-        return res.status(200).json(listings);
+        return res.status(200).json({listings,totalListings});
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Server error" });

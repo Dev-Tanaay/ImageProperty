@@ -32,7 +32,7 @@ export default function PaymentSuccess() {
         if (data.success === false) {
           setError(data.message);
         } else {
-          navigate(`/listing/${data._id}`);
+          // navigate(`/listing/${data._id}`);
         }
       } catch (error) {
         setError(error.message);

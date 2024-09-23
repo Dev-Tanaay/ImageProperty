@@ -64,7 +64,7 @@ const Summary = () => {
       <div className="w-60 h-40 bg-green-500 rounded-lg shadow-lg flex flex-col justify-center items-center text-white ml-8">
         <FaMoneyBillWave size={40} className="mb-4" />
         <p className="text-lg">Account</p>
-        <p className="text-2xl font-semibold">₹ {totalAmount}</p>
+        <p className="text-2xl font-semibold">₹ {parseFloat((totalAmount).toFixed(2))}</p>
       </div>
 
       <div className="w-60 h-40 bg-blue-500 rounded-lg shadow-lg flex flex-col justify-center items-center text-white ml-8">

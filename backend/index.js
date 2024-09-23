@@ -25,18 +25,22 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
+// Define your API routes
 app.use('/api/user', userRoute);
 app.use('/api/auth', authRoute);
-app.use("/api/admin", adminRoute);
+app.use('/api/admin', adminRoute);
 app.use('/api/listing', listingRoute);
-app.post("/api/payment", paymentController);
+app.post('/api/payment', paymentController);
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+// Serve static files from the 'client/dist' directory
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
+// Serve index.html for all other routes
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
+// Error handling middleware
 app.use((err, req, res, next) => {
     const statusCode = Number(err.statusCode) || 500; // Ensure it's a number
     const message = err.message || 'Internal Server Error';

@@ -131,6 +131,29 @@ export default function Profile() {
       setShowListingsError(true);
     }
   };
+  const handleUpdatePayment=async(listingId)=>{
+    const paymentRes = await fetch('/api/pay/updatepayment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        listingId:listingId,
+        startDate: new Date().toISOString(),username: currentUser.username,
+        email:currentUser.email
+      }),
+    });
+
+    if (!paymentRes.ok) {
+      throw new Error(`Payment request failed with status: ${paymentRes.status}`);
+    }
+
+    const paymentData = await paymentRes.json();
+    if (paymentData.url) {
+      window.location.href = paymentData.url;
+    } else {
+      throw new Error("Payment URL not received");
+    }
+    navigate('/profile');
+  }
 
   const handleListingDelete = async (listingId) => {
     try {
@@ -273,6 +296,12 @@ export default function Profile() {
                 <Link to={`/update-listing/${listing._id}`}>
                   <button className='text-green-700 uppercase'>Edit</button>
                 </Link>
+                <button
+                  onClick={() => handleUpdatePayment(listing._id)}
+                  className='text-blue-600 uppercase'
+                >
+                  Payment
+                </button>
               </div>
             </div>
           ))}

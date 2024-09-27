@@ -161,10 +161,13 @@ export default function CreateListing() {
 
     
 
-    const paymentRes = await fetch('/api/payment', {
+    const paymentRes = await fetch('/api/pay/payment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({username: currentUser.username}),
+      body: JSON.stringify({
+        username: currentUser.username,
+        email:currentUser.email
+      }),
     });
 
     if (!paymentRes.ok) {

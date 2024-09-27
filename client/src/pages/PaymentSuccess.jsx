@@ -25,6 +25,7 @@ export default function PaymentSuccess() {
           body: JSON.stringify({
             ...formData,
             userRef: currentUser._id,
+            startDate: new Date().toISOString() 
           }),
         });
         const data = await res.json();

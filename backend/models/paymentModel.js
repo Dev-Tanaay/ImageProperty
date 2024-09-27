@@ -1,4 +1,4 @@
-const mongoose=require("mongoose");
+const mongoose = require("mongoose");
 
 const pay = new mongoose.Schema(
   {
@@ -9,7 +9,10 @@ const pay = new mongoose.Schema(
       type: String,
     },
     amount: {
-      type:Number,
+      type: Number,
+    },
+    email: {
+      type: String
     },
   },
   { timestamps: true }
@@ -17,4 +20,4 @@ const pay = new mongoose.Schema(
 
 const payment = mongoose.model('Payment', pay);
 
-module.exports=payment;
+module.exports = payment;

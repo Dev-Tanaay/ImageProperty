@@ -5,7 +5,8 @@ const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
 const listingRoute = require("./routes/listingRoute");
 const adminRoute = require("./routes/adminRoute");
-const paymentController = require("./controllers/paymentController");
+const paymentRoute=require("./routes/paymentRoute");
+const dailyCheck=require("./automation/autoMate");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
@@ -29,16 +30,10 @@ app.use('/api/user', userRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/listing', listingRoute);
-app.post('/api/payment', paymentController);
-
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-});
+app.use('/api/pay', paymentRoute);
 
 
-
+dailyCheck()
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}!`);

@@ -6,7 +6,7 @@ const createListing = async (req, res, next) => {
     const { startDate } = req.body;
     const startDateObj = new Date(startDate);
     const endDate = new Date(startDateObj);
-    endDate.setDate(startDateObj.getDate() + 30);
+    endDate.setDate(startDateObj.getDate()+30);
     const listingData = { ...req.body, endDate: endDate.toISOString() };
     const listing = await Listing.create(listingData);
     return res.status(201).json(listing);

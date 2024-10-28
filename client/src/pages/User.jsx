@@ -48,12 +48,12 @@ const User = () => {
                 <tbody>
                     {userData.map((item, index) => (
                         <tr key={index} className="border-b border-gray-200">
-                            <td className="py-3 px-6 max-w-xs break-words">{item.name}</td>
-                            <td className="py-3 px-6 max-w-xs break-words">{item.description}</td>
-                            <td className="py-3 px-6 max-w-xs break-words">{item.address}</td>
-                            <td className="py-3 px-6 max-w-xs break-words">{item.regularPrice}</td>
-                            <td className="py-3 px-6 max-w-xs break-words">{item.discountPrice}</td>
-                            <td className="py-3 px-6">{item.type}</td>
+                            <td className="py-3 px-3 max-w-xs break-words">{item.name}</td>
+                            <td className="px-4 py-3 ">{item.description}</td>
+                            <td className="px-4 py-3 ">{item.address}</td>
+                            <td className="py-3 px-3 max-w-xs break-words">{item.regularPrice}</td>
+                            <td className="py-3 px-3 max-w-xs break-words">{item.discountPrice}</td>
+                            <td className="py-3 px-3">{item.type}</td>
                         </tr>
                     ))}
                 </tbody>

@@ -26,7 +26,7 @@ const paymentController = async (req, res, next) => {
         {
           price_data: {
             currency: "inr",
-            product_data: { name: "Test Product" },
+            product_data: { name: "IMAGE PROPERTY" },
             unit_amount: inr,
           },
           quantity: 1,
@@ -62,7 +62,7 @@ const updatePayment = async (req, res, next) => {
         {
           price_data: {
             currency: "inr",
-            product_data: { name: "Test Product" },
+            product_data: { name: "IMAGE PROPERTY" },
             unit_amount: inr,
           },
           quantity: 1,
@@ -95,7 +95,6 @@ const updatePayment = async (req, res, next) => {
 
       await listing.save();
 
-      // return res.status(200).json({ message: "Listing dates updated successfully", listing });
   } catch (error) {
     next(errorHandler("500", error));
   }

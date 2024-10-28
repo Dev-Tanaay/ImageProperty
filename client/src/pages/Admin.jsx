@@ -1,5 +1,4 @@
 import React from "react";
-import { FaDollarSign, FaShoppingCart, FaUser, FaGift } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 

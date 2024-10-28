@@ -15,25 +15,29 @@ const deleteAfterExpiry = async (next) => {
 
 
 
-const checkExpiration=async()=>{
-    const today=moment();
-    try{
-        const listings=await Listing.find();
-        for (const listing of listings){
-            const endDate=moment(listing.endDate);
-            const daysToEnd=endDate.diff(today,'days');
-            if(daysToEnd<=3 && daysToEnd!=0 && daysToEnd>=0){
-                const user=await User.findOne({_id:listing.userRef});
-                if(user){
-                    sendExpirationEmail(user.email,user.username,listing.name,listing.endDate.toDateString());
-                    console.log("Email is been sent");
+const checkExpiration = async () => {
+    const today = moment().startOf('day');
+    try {
+        const listings = await Listing.find();
+        for (const listing of listings) {
+            const endDate = moment(listing.endDate).startOf('day');
+            const daysToEnd = endDate.diff(today, 'days');
+            console.log(`Days to end for listing ${listing.name}: ${daysToEnd}`);
+            
+            if (daysToEnd <= 3 && daysToEnd !== 0 && daysToEnd >= 0) {
+                const user = await User.findOne({ _id: listing.userRef });
+                if (user) {
+                    console.log(`Sending email to ${user.email} for listing ${listing.name}`);
+                    sendExpirationEmail(user.email, user.username, listing.name, listing.endDate.toDateString());
+                    console.log("Email has been sent");
                 }
             }
         }
-    }catch(error){
-        errorHandler('401',"error");
+    } catch (error) {
+        errorHandler('401', "error");
     }
-}
+};
+
 
 
 module.exports = { deleteAfterExpiry, checkExpiration };

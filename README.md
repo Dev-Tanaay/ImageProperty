@@ -25,5 +25,4 @@ A comprehensive web application for listing, browsing, and managing real estate 
  **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/ImageProperty.git
-   cd Real-Estate
 

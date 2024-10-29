@@ -15,6 +15,7 @@ A comprehensive web application for listing, browsing, and managing real estate 
 - **Backend**: Node.js, Express, Mongoose, bcrypt.js
 - **Database**: MongoDB
 - **Image Processing**: Firebase Storage, Sightengine API
+- **Payment Gatweay**: Stripe API
 
 ## Project Structure
 
